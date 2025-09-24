@@ -43,6 +43,3 @@ To call openai and output its response as response.mw.
 % python3 noprompt.py <Jira.csv>
 ```
 To munge the csv to mw locally, no REST API, no tokens. Whether its any good or not is a good question. It outputs output.mw.
-
-% python spexml.py -batch ../Documents/specs   # when running /Users/pking/spexml/spexml.py
-```

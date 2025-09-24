@@ -21,7 +21,7 @@ Any versions should work. Once you've validated your set up by successfully chec
 
 3. From this repo, download spexml.py. You can click the download button from the [spexml.py](https://cd.splunkdev.com/pking/spexml/-/blob/master/spexml.py) page to do this.
 
-4. From Terminal, install [pandas](https://pypi.org/project/pandas/)) and [openai](https://pypi.org/project/openai/)by entering:
+4. From Terminal, install [pandas](https://pypi.org/project/pandas/)) and [openai](https://pypi.org/project/openai/) by entering:
 
 ```bash
 % pip install pandas

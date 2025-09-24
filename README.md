@@ -30,6 +30,8 @@ Any versions should work. Once you've validated your set up by successfully chec
 
 You only must do this once; if you want to check whether you already have them, you could enter `pip show pandas` then `pip show openai` first.
 
+(All the other dependencies, from __future__ on down...come with Python 3)
+
 5. Translate a specific jira file (named Jira.csv) file from your downloaded, extracted ReXML directory. In Terminal, from the directory containing prompt.py, enter:
 
 ```bash

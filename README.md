@@ -19,7 +19,7 @@ pip 25.0 from /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/
 
 Any versions should work. Once you've validated your set up by successfully checking versions, proceed to the next step.
 
-3. From this repo, download spexml.py. You can click the download button from the [spexml.py](https://cd.splunkdev.com/pking/spexml/-/blob/master/spexml.py) page to do this.
+3. Download this repo. Lots of ways to do this, including **Code > Download Zip** then extract.
 
 4. From Terminal, install [pandas](https://pypi.org/project/pandas/) and [openai](https://pypi.org/project/openai/) by entering:
 
@@ -30,7 +30,7 @@ Any versions should work. Once you've validated your set up by successfully chec
 
 You only must do this once; if you want to check whether you already have them, you could enter `pip show pandas` then `pip show openai` first.
 
-5. You can translate a specific jira file (named Jira.csv) file from the ReXML directory (the same directory as prompt.py and noprompt.py). In Terminal, from the ReXML directory containing prompt.py, enter:
+5. Translate a specific jira file (named Jira.csv) file from your downloaded, extracted ReXML directory. In Terminal, from the directory containing prompt.py, enter:
 
 ```bash
 % python3 prompt.py <Jira.csv>

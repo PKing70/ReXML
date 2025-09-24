@@ -5,7 +5,7 @@ Translate Release note output from Jira to MediaWiki markup/tables, at least...
 
 Usage:
 
-1. Have Python and Pip. If you don't yet, get it from [python.org](https://www.python.org/downloads/) then proceed to the next step.
+1. Have Python v3 and Pip. If you don't yet, get it from [python.org](https://www.python.org/downloads/) then proceed to the next step.
 
 1. From Terminal, validate your Python and Pip configuration:
 

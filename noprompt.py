@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 from typing import Iterable, Sequence
@@ -177,22 +178,45 @@ def build_release_notes(grouped: dict[str, list[dict]]) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
-def main() -> None:
-    if not CSV_PATH.exists():
-        raise SystemExit(f"CSV file not found: {CSV_PATH}")
+def process_file(csv_path: Path, output_path: Path) -> None:
+    if not csv_path.exists():
+        raise SystemExit(f"CSV file not found: {csv_path}")
 
-    header, rows = load_csv(CSV_PATH)
+    header, rows = load_csv(csv_path)
     issues = collect_issues(header, rows)
     if not issues:
         raise SystemExit("No issues with acceptable resolution were found in the CSV export.")
 
     grouped = group_by_fix_version(issues)
     release_notes = build_release_notes(grouped)
-    OUTPUT_PATH.write_text(release_notes, encoding="utf-8")
+    output_path.write_text(release_notes, encoding="utf-8")
     unique_issue_count = len({issue["key"] for issue in issues})
     print(
-        f"Wrote {OUTPUT_PATH} with {unique_issue_count} unique issues across {len(grouped)} fix version buckets."
+        f"Wrote {output_path} with {unique_issue_count} unique issues across {len(grouped)} fix version buckets."
     )
+
+
+def main() -> None:
+    if len(sys.argv) > 1 and sys.argv[1] == "-batch":
+        if len(sys.argv) < 3:
+            print("Error: Missing directory path for batch mode.")
+            sys.exit(1)
+        directory = Path(sys.argv[2])
+        if not directory.is_dir():
+            print(f"Error: {directory} is not a directory.")
+            sys.exit(1)
+
+        csv_files = sorted(directory.glob("*.csv"))
+        if not csv_files:
+            print(f"No CSV files found in {directory}.")
+            return
+
+        default_csv = CSV_PATH.resolve()
+        for csv_file in csv_files:
+            output_path = OUTPUT_PATH if csv_file.resolve() == default_csv else csv_file.with_suffix(OUTPUT_PATH.suffix)
+            process_file(csv_file, output_path)
+    else:
+        process_file(CSV_PATH, OUTPUT_PATH)
 
 
 if __name__ == "__main__":

@@ -80,5 +80,5 @@ Replace `<directory>` with an absolute path from root, or a relative path from p
 or:
 
 ```bash
-% python spexml.py -batch ../Documents/specs   # when running /Users/pking/rexml/prompt.py
+% python prompt.py -batch ../Documents/specs   # when running /Users/pking/rexml/prompt.py
 ```

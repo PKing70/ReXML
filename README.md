@@ -53,6 +53,8 @@ To munge the csv to mw locally, no REST API, no tokens. Whether its any good or 
 % python3 promptcircuit.py <Jira.csv>
 ```
 
+![circuit API access](circuitapi.png "Our Circuit API!")
+
 This is based on our project's details. Which means I get an appkey and secret [here.](https://ai-chat.cisco.com/bridgeit-platform/api/view). Then I copy the key, export it to a local env variable (`CISCO_API_KEY`), and promptcircuit.py runs and outputs `circuitresponse.mv`. 
 
 Now, we can at least compare circuit to openai and local translation, and afaik we can avoid the "running out of openai tokens/thoughput" errors, though I haven't yet revised promptcircuit to do a full blown csv to mw request (which overwhelmed my free openai horsepower so I cut it back to 10 rows).
@@ -61,4 +63,22 @@ One thing to figure out: the circuit API provision seems to give access tokens g
 
 Likely there are other ways to do it with key persistence; I don't know yet. Or maybe that's just the circuit way?
 
-![circuit API access](circuitapi.png "Our Circuit API!")
+Finally:
+
+8. You can also translate a directory of csv files as a batch. To do this, from a directory containing a utility, enter:
+
+```bash
+% python3 prompt.py -batch <directory>
+```
+
+Replace `<directory>` with an absolute path from root, or a relative path from prompt, noprompt, or promptcircuit.py. Meaning, either way works:
+
+```bash
+% python prompt.py -batch /Users/pking/Documents/specs
+```
+
+or:
+
+```bash
+% python spexml.py -batch ../Documents/specs   # when running /Users/pking/rexml/prompt.py
+```

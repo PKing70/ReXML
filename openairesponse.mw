@@ -1,0 +1,26 @@
+```mediawiki
+{| class="wikitable"
+|-
+! Ticket Key !! Summary !! Components !! Fix Versions !! Priority !! Issue Type !! Status !! Resolution !! Labels !! Description
+|-
+| SPL-280187 || MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || Backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+|-
+| SPL-280186 || MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || Backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+|-
+| SPL-280185 || MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || Backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+|-
+| SPL-280184 || MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || Backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+|-
+| SPL-279750 || After upgrade to 9.3.0+, UFs report 'Failed to download app' || None || None || P3-Medium || Bug || Closed || Fixed || None || Deployment Server not working properly after upgrade.
+|-
+| SPL-279657 || Distributed search loses bundle info from cluster peers || None || Pocky || P1-Immediate || Bug || Closed || Fixed || None || Regression exposed bundle info prematurely.
+|-
+| SPL-278716 || KV store upgrade to server version 7.0 fails if SSL compression is not default || None || None || P2-High || Bug || Closed || Fixed || None || Issues with SSL compression settings in upgrade.
+|-
+| SPL-278604 || Release notes content unavailable for UF versions || None || None || Unknown || Bug || Untriaged || || None || Need to manually recreate info about UF issues post migration.
+|-
+| SPL-277301 || Default sourcetype has 'NO_BINARY_CHECK' as 'true' on Web UI || None || None || P3-Medium || Bug || Closed || Fixed || None || Discrepancy in 'NO_BINARY_CHECK' setting between Web UI and 'props.conf'.
+|-
+| SPL-273098 || "Show Source" UI returns a javascript error instead of 404 || None || None || P2-High || Bug || Resolved || Fixed || None || Field Action error documented in [https://docs.splunk.com/Documentation/Splunk/9.0.4/Knowledge/Controlworkflowactionappearanceinfieldandeventmenus|docs].
+|}
+```

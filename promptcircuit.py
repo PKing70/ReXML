@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a MediaWiki table via the OpenAI API using a trimmed Jira CSV export."""
+"""Call Cisco GPT endpoint to generate MediaWiki release notes from Jira CSV."""
 from __future__ import annotations
 
 import csv
@@ -8,10 +8,12 @@ from itertools import islice
 from pathlib import Path
 from typing import Iterable
 
-from openai import OpenAI
+import requests
 
 CSV_PATH = Path("Jira.csv")
-OUTPUT_PATH = Path("openairesponse.mw")
+OUTPUT_PATH = Path("circuitresponse.mw")
+API_URL = "https://chat-ai.cisco.com/openai/deployments/gpt-4o-mini/chat/completions"
+API_USER_FIELD = '{"appkey":"egai-prd-ther-020122487-coding-1758642862113"}'
 MAX_ISSUES = 10
 MAX_DESCRIPTION_CHARS = 600
 
@@ -92,23 +94,42 @@ def build_prompt(issues: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def call_openai(prompt: str) -> str:
-    api_key = os.environ.get("OPENAI_API_KEY")
+def call_cisco_api(prompt: str) -> str:
+    api_key = os.environ.get("CISCO_API_KEY")
     if not api_key:
-        raise SystemExit("OPENAI_API_KEY environment variable is not set.")
+        raise SystemExit("CISCO_API_KEY environment variable is not set.")
 
-    client = OpenAI(api_key=api_key)
-    response = client.responses.create(
-        model="gpt-4o",
-        input=prompt,
-    )
-    return response.output_text
+    payload = {
+        "messages": [
+            {
+                "role": "user",
+                "content": prompt,
+            }
+        ],
+        "user": API_USER_FIELD,
+        "stop": ["<|im_end|>"],
+    }
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "api-key": api_key,
+    }
+
+    response = requests.post(API_URL, headers=headers, json=payload, timeout=60)
+    response.raise_for_status()
+    data = response.json()
+
+    try:
+        return data["choices"][0]["message"]["content"]
+    except (KeyError, IndexError) as exc:
+        raise SystemExit(f"Unexpected response structure: {data}") from exc
 
 
 def main() -> None:
     issues = load_issues(CSV_PATH, MAX_ISSUES)
     prompt = build_prompt(issues)
-    response_text = call_openai(prompt)
+    response_text = call_cisco_api(prompt)
     OUTPUT_PATH.write_text(response_text, encoding="utf-8")
     print(f"Wrote MediaWiki output for {len(issues)} issues to {OUTPUT_PATH}.")
 

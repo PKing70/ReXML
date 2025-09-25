@@ -1,26 +1,26 @@
 ```mediawiki
 {| class="wikitable"
 |-
-! Ticket Key !! Summary !! Components !! Fix Versions !! Priority !! Issue Type !! Status !! Resolution !! Labels !! Description
+! Ticket Key !! Summary !! Components !! Fix Versions !! Priority !! Type !! Status !! Resolution !! Labels !! Description
 |-
-| SPL-280187 || [CLONE] [sustain/splunk-10.0] MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+| SPL-280187 || [CLONE] [sustain/splunk-10.0] MachineTypeFilter doesn't work when DS works in clustered mode - applications are getting wrongfully updated into clients when performing OS filtering in serverclass || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|SPL-270345].
 |-
-| SPL-280186 || [CLONE] [sustain/europium] MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+| SPL-280186 || [CLONE] [sustain/europium] MachineTypeFilter doesn't work when DS works in clustered mode - applications are getting wrongfully updated into clients when performing OS filtering in serverclass || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|SPL-270345].
 |-
-| SPL-280185 || [CLONE] [sustain/duranium] MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+| SPL-280185 || [CLONE] [sustain/duranium] MachineTypeFilter doesn't work when DS works in clustered mode - applications are getting wrongfully updated into clients when performing OS filtering in serverclass || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|SPL-270345].
 |-
-| SPL-280184 || [CLONE] [sustain/cobalt] MachineTypeFilter doesn't work when DS works in clustered mode || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|smart-link]
+| SPL-280184 || [CLONE] [sustain/cobalt] MachineTypeFilter doesn't work when DS works in clustered mode - applications are getting wrongfully updated into clients when performing OS filtering in serverclass || None || None || P2-High || Bug || Resolved || Fixed || None || This ticket is a backport of [https://splunk.atlassian.net/browse/SPL-270345|SPL-270345].
 |-
-| SPL-279750 || After upgrade to 9.3.0+, UFs report 'Failed to download app' || None || None || P3-Medium || Bug || Closed || Fixed || None || After Splunk upgrade from 9.2.2 to 9.3.1, deployment of apps using Deployment Server is faulty.
+| SPL-279750 || After upgrade to 9.3.0+, UFs are reporting 'Failed to download app', while DS reports 'app does not exist on the server'. || None || None || P3-Medium || Bug || Closed || Fixed || None || After Splunk upgrade from 9.2.2 to 9.3.1, Universal Forwarders report 'Failed to download app', while Deployment Server indicates app 'does not exist'.
 |-
-| SPL-279657 || Distributed search may lose information about bundles || None || Pocky || P1-Immediate || Bug || Closed || Fixed || None || Regression causing exposure of information without available bundles.
+| SPL-279657 || Distributed search may lose information about bundles from cluster peers on new search generations, removes peers when best-effort mode is enabled. || None || Pocky || P1-Immediate || Bug || Closed || Fixed || None || Adding cluster peers after a search generation change may prematurely expose their information with no bundles available, causing search request pauses.
 |-
-| SPL-278716 || KV store upgrade to server version 7.0 fails when SSL compression not default || None || None || P2-High || Bug || Closed || Fixed || None || Customer recently upgraded to Splunk 9.4.2; auto upgrade disabled.
+| SPL-278716 || KV store upgrade to server version 7.0 fails when SSL compression is not set to its default value. || None || None || P2-High || Bug || Closed || Fixed || None || Customer reported issues upgrading Splunk to 9.4.2 and checked migration logs. Auto upgrade disabled.
 |-
-| SPL-278604 || Release notes content unavailable in docs for some UF versions || None || None || Unknown || Bug || Untriaged ||  || None || Planned manual recreation of UF known and fixed issues information needed.
+| SPL-278604 || Release notes content unavailable in docs for some versions of universal forwarder || None || None || Unknown || Bug || Untriaged ||  || None || Migration to help.splunk.com requires manual recreation of UF known and fixed issues for maintenance releases.
 |-
-| SPL-277301 || Default sourcetype has 'NO_BINARY_CHECK' as 'true' on Web UI || None || None || P3-Medium || Bug || Closed || Fixed || None || 'NO_BINARY_CHECK' displayed as 'true' by default; not set in 'props.conf'.
+| SPL-277301 || The default sourcetype has 'NO_BINARY_CHECK' as 'true' on Web UI while it's not set in props.conf || None || None || P3-Medium || Bug || Closed || Fixed || None || Customer noted 'NO_BINARY_CHECK' is displayed as 'true' for default sourcetypes without being in props.conf.
 |-
-| SPL-273098 || [PUBLIC] "Show Source" UI returns a javascript error || None || None || P2-High || Bug || Resolved || Fixed || None || "Show Source" Field Action incorrectly returns javascript error instead of 404.
+| SPL-273098 || [PUBLIC] "Show Source" UI returns a javascript error when it should return a 404 error || None || None || P2-High || Bug || Resolved || Fixed || None || The “Show Source” action runs a search but error occurs instead of returning a 404.
 |}
 ```

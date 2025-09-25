@@ -61,4 +61,4 @@ One thing to figure out: the circuit API provision seems to give access tokens g
 
 Likely there are other ways to do it with key persistence; I don't know yet. Or maybe that's just the circuit way?
 
-![circuit API access](circuitapi.csv "Our Circuit API!")
+![circuit API access](circuitapi.png "Our Circuit API!")
